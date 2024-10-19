@@ -1,0 +1,38 @@
+/* src/GrowthChart.css */
+
+.chart-container {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  background-color: #f3c48a; /* Background similar to the image */
+}
+
+.giraffe {
+  height: 100%; /* Adjust size to fit the chart */
+  width: 60%;
+  overflow: visible;
+  object-fit: fill;
+  margin-bottom: 40px;
+  margin-left: -20px;
+}
+
+.measurements {
+  position: relative;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: -13%;
+}
+
+.tick {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.tick span {
+  font-size: 18px;
+}
