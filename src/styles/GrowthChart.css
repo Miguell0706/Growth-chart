@@ -4,35 +4,109 @@
   display: flex;
   align-items: center;
   height: 100vh;
+  overflow: visible;
+  width: 100px;
   background-color: #f3c48a; /* Background similar to the image */
 }
 
 .giraffe {
   height: 100%; /* Adjust size to fit the chart */
-  width: 60%;
+  width: clamp(200px, 50vw, 500px);
   overflow: visible;
+  margin-left: -30px;
   object-fit: fill;
-  margin-bottom: 40px;
-  margin-left: -20px;
 }
-
 .measurements {
-  position: relative;
-  width: 100px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-left: -13%;
+  margin-left: -80px;
 }
-
-.tick {
+.measurement-quantity {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin: 5px 0;
-  font-weight: bold;
+  margin-block: 12px;
+  height: 15px; /* Adjust for spacing between ticks */
+  position: relative;
 }
-
-.tick span {
-  font-size: 18px;
+.measurement-quantity span {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: end;
+  width: 100px;
+  color: #b0682a; /* Match the tick color */
+}
+.ticks {
+  font-size: 17px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%; /* Full width */
+  margin-top: -35px;
+  color: #b0682a; /* Match the tick color */
+}
+.small-tick {
+  height: 0.59vh; /* Adjust for spacing between ticks */
+}
+.big-tick {
+  height: 4px; /* Adjust for spacing between ticks */
+}
+.big-tick-180 {
+  margin-top: 35px;
+}
+@media screen and (min-width: 768px) {
+  .measurements {
+    margin-left: -100px;
+  }
+  .measurement-quantity span {
+    font-size: 32px;
+  }
+  .ticks {
+    font-size: 28px;
+  }
+}
+@media screen and (min-height: 730px) {
+  .measurement-quantity {
+    margin-block: 15px;
+  }
+  .ticks {
+    margin-top: -40px;
+  }
+  .big-tick-180 {
+    margin-top: 40px;
+  }
+  .small-tick {
+    height: 0.64vh;
+  }
+}
+@media screen and (min-height: 810px) {
+  .measurement-quantity {
+    margin-block: 18px;
+  }
+  .ticks {
+    font-size: 28px;
+    margin-top: -60px;
+  }
+  .big-tick-180 {
+    margin-top: 45px;
+  }
+  .small-tick {
+    height: 0.62vh;
+  }
+}
+@media screen and (min-height: 900px) {
+  .measurement-quantity {
+    margin-block: 20px;
+  }
+  .ticks {
+    font-size: 28px;
+    margin-top: -50px;
+  }
+  .big-tick-180 {
+    margin-top: 50px;
+  }
+  .small-tick {
+    height: 0.59vh;
+  }
 }
