@@ -12,17 +12,14 @@ const GrowthChart = () => {
     const rect = measurementsRef.current.getBoundingClientRect();
 
     // Calculate cursor's position relative to the measurements div
-    const x = e.clientX - rect.left - 50;
-    const y = e.clientY - rect.top;
+    const x = e.clientX - rect.left - 30;
+    const y = e.clientY - rect.top - 30;
 
     // Show and position the lens
     const lens = lensRef.current;
     lens.style.display = "block";
     lens.style.left = `${x + 60 - lens.offsetWidth / 2}px`;
     lens.style.top = `${y - lens.offsetHeight / 2}px`;
-
-    // Add blur to the measurements div
-    measurementsRef.current.classList.add("blurred");
 
     // Adjust zoomed content inside the lens to align correctly
     const zoomedContent = lens.querySelector(".zoomed-content");
@@ -61,38 +58,38 @@ const GrowthChart = () => {
             <span>{value}</span>
             <div className="ticks">
               {value === 180 ? (
-                <div className="big-tick-180">_____</div>
+                <div className="big-tick-180">___</div>
               ) : (
                 <>
                   <div className="small-tick" key={`${value}-1`}>
-                    __
+                    _
                   </div>
                   <div className="small-tick" key={`${value}-2`}>
-                    __
+                    _
                   </div>
                   <div className="small-tick" key={`${value}-3`}>
-                    __
+                    _
                   </div>
                   <div className="small-tick" key={`${value}-4`}>
-                    __
+                    _
                   </div>
                   <div className="big-tick" key={`${value}-5`}>
-                    ____
+                    __
                   </div>
                   <div className="small-tick" key={`${value}-6`}>
-                    __
+                    _
                   </div>
                   <div className="small-tick" key={`${value}-7`}>
-                    __
+                    _
                   </div>
                   <div className="small-tick" key={`${value}-8`}>
-                    __
+                    _
                   </div>
                   <div className="small-tick" key={`${value}-9`}>
-                    __
+                    _
                   </div>
                   <div className="big-tick" key={`${value}-10`}>
-                    ______
+                    ____
                   </div>
                 </>
               )}
@@ -104,17 +101,45 @@ const GrowthChart = () => {
         <div ref={lensRef} className="zoom-lens">
           <div className="zoomed-content">
             {measurements.map((value) => (
-              <div className="measurement-quantity" key={`zoom-${value}`}>
+              <div className="measurement-quantity" key={value}>
                 <span>{value}</span>
                 <div className="ticks">
-                  {Array.from({ length: 9 }, (_, i) => (
-                    <div
-                      className={`${i === 4 ? "big-tick" : "small-tick"}`}
-                      key={`zoom-${value}-${i + 1}`}
-                    >
-                      {i === 4 ? "____" : "__"}
-                    </div>
-                  ))}
+                  {value === 180 ? (
+                    <div className="big-tick-180">___</div>
+                  ) : (
+                    <>
+                      <div className="small-tick" key={`${value}-1`}>
+                        _
+                      </div>
+                      <div className="small-tick" key={`${value}-2`}>
+                        _
+                      </div>
+                      <div className="small-tick" key={`${value}-3`}>
+                        _
+                      </div>
+                      <div className="small-tick" key={`${value}-4`}>
+                        _
+                      </div>
+                      <div className="big-tick" key={`${value}-5`}>
+                        ___
+                      </div>
+                      <div className="small-tick" key={`${value}-6`}>
+                        _
+                      </div>
+                      <div className="small-tick" key={`${value}-7`}>
+                        _
+                      </div>
+                      <div className="small-tick" key={`${value}-8`}>
+                        _
+                      </div>
+                      <div className="small-tick" key={`${value}-9`}>
+                        _
+                      </div>
+                      <div className="big-tick" key={`${value}-10`}>
+                        ____
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             ))}

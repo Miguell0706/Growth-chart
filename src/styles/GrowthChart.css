@@ -5,7 +5,7 @@
   align-items: center;
   height: 100vh;
   overflow: visible;
-  background-color: #f3c48a; /* Background similar to the image */
+  background-color: rgb(244, 194, 128); /* Background similar to the image */
 }
 
 .giraffe {
@@ -32,31 +32,49 @@
 /* Zoom Lens Styling */
 .zoom-lens {
   position: absolute;
-  width: 190px;
-  height: 130px;
+  width: 210px;
+  height: 180px;
   border-radius: 80%;
   overflow: hidden;
   pointer-events: none;
   display: none;
   z-index: 10;
-  background-color: #f3c48a;
+  background: radial-gradient(
+    circle,
+    rgba(243, 196, 138, 1) 0%,
+    /* Fully colored at the center */ rgba(243, 196, 138, 0.5) 60%,
+    /* Semi-transparent midway */ rgba(243, 196, 138, 0) 100%
+      /* Fully transparent at the edges */
+  );
 }
 
 /* Zoomed Measurements */
 .zoomed-content {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(244, 194, 128); /* Background similar to the image */
   transform: scale(2); /* 2x magnification */
   transform-origin: top left;
   pointer-events: none;
+  margin-top: 30px;
+}
+.zoomed-content .measurement-quantity {
+  margin-top: 38px;
+  height: 12px; /* Adjust for spacing between ticks */
+  position: relative;
 }
 .measurement-quantity span {
   font-size: 22px;
   font-weight: bold;
   text-align: end;
   width: 100px;
-  color: #b0682a; /* Match the tick color */
+  color: #ba6416; /* Match the tick color */
 }
 .ticks {
+  position: relative;
   font-size: 17px;
   font-weight: 900;
   display: flex;
@@ -66,15 +84,17 @@
   align-items: flex-start;
   width: 100%; /* Full width */
   margin-top: -35px;
-  color: #b0682a; /* Match the tick color */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: #ba6416; /* Match the tick color */
+  text-shadow: 0px 0.5px 1.2px #ba6416;
 }
+
 .small-tick {
-  height: 0.59vh; /* Adjust for spacing between ticks */
+  height: 0.55vh; /* Adjust for spacing between ticks */
 }
 .big-tick {
-  height: 4px; /* Adjust for spacing between ticks */
+  height: 5px; /* Adjust for spacing between ticks */
 }
+
 .big-tick-180 {
   margin-top: 35px;
 }
@@ -105,31 +125,31 @@
 }
 @media screen and (min-height: 810px) {
   .measurement-quantity {
-    margin-block: 18px;
+    margin-block: 19px;
   }
   .ticks {
-    font-size: 28px;
-    margin-top: -60px;
+    font-size: 29px;
+    margin-top: -47px;
   }
   .big-tick-180 {
     margin-top: 45px;
   }
   .small-tick {
-    height: 0.6vh;
+    height: 0.61vh;
   }
 }
 @media screen and (min-height: 900px) {
   .measurement-quantity {
-    margin-block: 21px;
+    margin-block: 20px;
   }
   .ticks {
     font-size: 26px;
-    margin-top: -55px;
+    margin-top: -48px;
   }
   .big-tick-180 {
     margin-top: 50px;
   }
   .small-tick {
-    height: 0.62vh;
+    height: 0.59vh;
   }
 }
