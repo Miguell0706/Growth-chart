@@ -1,17 +1,61 @@
+import React, { useRef } from "react";
 import "../styles/GrowthChart.css";
-// src/GrowthChart.jsx
-import React from "react";
+
 const giraffeImage = "/images/giraffe2.png";
 const measurements = Array.from({ length: 16 }, (_, i) => (18 - i) * 10);
 
 const GrowthChart = () => {
+  const lensRef = useRef(null);
+  const measurementsRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    const rect = measurementsRef.current.getBoundingClientRect();
+
+    // Calculate cursor's position relative to the measurements div
+    const x = e.clientX - rect.left - 50;
+    const y = e.clientY - rect.top;
+
+    // Show and position the lens
+    const lens = lensRef.current;
+    lens.style.display = "block";
+    lens.style.left = `${x + 60 - lens.offsetWidth / 2}px`;
+    lens.style.top = `${y - lens.offsetHeight / 2}px`;
+
+    // Add blur to the measurements div
+    measurementsRef.current.classList.add("blurred");
+
+    // Adjust zoomed content inside the lens to align correctly
+    const zoomedContent = lens.querySelector(".zoomed-content");
+
+    // Adjust for scrolling offsets if the page is scrolled
+    const scrollX = window.scrollX || window.pageXOffset;
+    const scrollY = window.scrollY || window.pageYOffset;
+
+    // Adjust zoomed content's position relative to the cursor
+    zoomedContent.style.left = `${-(x + scrollX) * 2}px`; // 2x magnification factor
+    zoomedContent.style.top = `${-(y + scrollY) * 2}px`;
+  };
+
+  const handleMouseLeave = () => {
+    const lens = lensRef.current;
+    lens.style.display = "none"; // Hide the lens
+
+    // Remove the blur effect
+    measurementsRef.current.classList.remove("blurred");
+  };
+
   return (
     <div className="chart-container">
       {/* Giraffe Image */}
       <img src={giraffeImage} alt="Giraffe" className="giraffe" />
 
-      {/* Measurement Lines and Profile Pictures */}
-      <div className="measurements">
+      {/* Measurements */}
+      <div
+        className="measurements"
+        ref={measurementsRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
         {measurements.map((value) => (
           <div className="measurement-quantity" key={value}>
             <span>{value}</span>
@@ -55,6 +99,27 @@ const GrowthChart = () => {
             </div>
           </div>
         ))}
+
+        {/* Zoom Lens */}
+        <div ref={lensRef} className="zoom-lens">
+          <div className="zoomed-content">
+            {measurements.map((value) => (
+              <div className="measurement-quantity" key={`zoom-${value}`}>
+                <span>{value}</span>
+                <div className="ticks">
+                  {Array.from({ length: 9 }, (_, i) => (
+                    <div
+                      className={`${i === 4 ? "big-tick" : "small-tick"}`}
+                      key={`zoom-${value}-${i + 1}`}
+                    >
+                      {i === 4 ? "____" : "__"}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
