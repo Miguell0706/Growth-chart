@@ -32,22 +32,23 @@
 /* Zoom Lens Styling */
 .zoom-lens {
   position: absolute;
-  width: 210px;
-  height: 180px;
+  width: 200px;
+  height: 190px;
   border-radius: 80%;
   overflow: hidden;
   pointer-events: none;
   display: none;
-  z-index: 10;
-  background: radial-gradient(
-    circle,
-    rgba(243, 196, 138, 1) 0%,
-    /* Fully colored at the center */ rgba(243, 196, 138, 0.5) 60%,
-    /* Semi-transparent midway */ rgba(243, 196, 138, 0) 100%
-      /* Fully transparent at the edges */
-  );
+  border: 10px solid rgb(244, 194, 128, 0.4);
+  background-color: rgb(
+    244,
+    194,
+    128,
+    0.7
+  ); /* Background similar to the image */
+  /* Masked area with blurred background */
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
-
 /* Zoomed Measurements */
 .zoomed-content {
   position: absolute;
@@ -55,17 +56,16 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(244, 194, 128); /* Background similar to the image */
   transform: scale(2); /* 2x magnification */
   transform-origin: top left;
   pointer-events: none;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .zoomed-content .measurement-quantity {
-  margin-top: 38px;
+  margin-top: 40px;
   height: 12px; /* Adjust for spacing between ticks */
-  position: relative;
 }
+
 .measurement-quantity span {
   font-size: 22px;
   font-weight: bold;
@@ -132,7 +132,7 @@
     margin-top: -47px;
   }
   .big-tick-180 {
-    margin-top: 45px;
+    margin-top: 47px;
   }
   .small-tick {
     height: 0.61vh;

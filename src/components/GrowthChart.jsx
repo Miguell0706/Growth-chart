@@ -12,21 +12,17 @@ const GrowthChart = () => {
     const rect = measurementsRef.current.getBoundingClientRect();
 
     // Calculate cursor's position relative to the measurements div
-    const x = e.clientX - rect.left - 30;
-    const y = e.clientY - rect.top - 30;
+    const x = e.clientX - rect.left - 40;
+    const y = e.clientY - rect.top - 40;
 
     // Show and position the lens
     const lens = lensRef.current;
     lens.style.display = "block";
-    lens.style.left = `${x + 60 - lens.offsetWidth / 2}px`;
-    lens.style.top = `${y - lens.offsetHeight / 2}px`;
+    lens.style.left = `${x + 40 - lens.offsetWidth / 2}px`;
+    lens.style.top = `${y + 20 - lens.offsetHeight / 2}px`;
 
     // Adjust zoomed content inside the lens to align correctly
     const zoomedContent = lens.querySelector(".zoomed-content");
-
-    // Adjust for scrolling offsets if the page is scrolled
-    const scrollX = window.scrollX || window.pageXOffset;
-    const scrollY = window.scrollY || window.pageYOffset;
 
     // Adjust zoomed content's position relative to the cursor
     zoomedContent.style.left = `${-(x + scrollX) * 2}px`; // 2x magnification factor
@@ -58,7 +54,7 @@ const GrowthChart = () => {
             <span>{value}</span>
             <div className="ticks">
               {value === 180 ? (
-                <div className="big-tick-180">___</div>
+                <div className="big-tick-180">____</div>
               ) : (
                 <>
                   <div className="small-tick" key={`${value}-1`}>
