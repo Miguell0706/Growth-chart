@@ -32,8 +32,8 @@
 /* Zoom Lens Styling */
 .zoom-lens {
   position: absolute;
-  width: 200px;
-  height: 190px;
+  width: 160px;
+  height: 140px;
   border-radius: 80%;
   overflow: hidden;
   pointer-events: none;
@@ -87,9 +87,22 @@
   color: #ba6416; /* Match the tick color */
   text-shadow: 0px 0.5px 1.2px #ba6416;
 }
-
+.zoomed-content {
+  margin-top: -10px;
+}
+.zoomed-content .measurement-quantity {
+  margin-top: 30px;
+  height: 8px; /* Adjust for spacing between ticks */
+}
+.zoomed-content .big-tick-180 {
+  margin-top: 35px;
+}
+.zoomed-content .small-tick {
+  height: 0.51vh;
+  margin-block: 0.2px;
+}
 .small-tick {
-  height: 0.55vh; /* Adjust for spacing between ticks */
+  height: 0.57vh; /* Adjust for spacing between ticks */
 }
 .big-tick {
   height: 5px; /* Adjust for spacing between ticks */
@@ -108,6 +121,24 @@
   .ticks {
     font-size: 28px;
   }
+  .zoomed-content {
+    margin-top: -10px;
+  }
+  .zoomed-content .measurement-quantity {
+    margin-top: 30px;
+    height: 9px; /* Adjust for spacing between ticks */
+  }
+  .zoomed-content .big-tick-180 {
+    margin-top: 33.5px;
+  }
+  .zoomed-content .small-tick {
+    height: 0.42vh;
+    margin-block: 0.4px;
+  }
+  .zoom-lens {
+    width: 170px;
+    height: 150px;
+  }
 }
 @media screen and (min-height: 730px) {
   .measurement-quantity {
@@ -122,20 +153,53 @@
   .small-tick {
     height: 0.62vh;
   }
+  .zoomed-content .measurement-quantity {
+    margin-top: 35px;
+    height: 9px; /* Adjust for spacing between ticks */
+  }
+  .zoomed-content .big-tick-180 {
+    margin-top: 41px;
+  }
+  .zoomed-content .small-tick {
+    height: 0.45vh;
+    margin-block: 0.4px;
+  }
+  .zoom-lens {
+    width: 180px;
+    height: 160px;
+  }
 }
 @media screen and (min-height: 810px) {
   .measurement-quantity {
-    margin-block: 19px;
+    margin-block: 17px;
   }
   .ticks {
     font-size: 29px;
     margin-top: -47px;
   }
   .big-tick-180 {
-    margin-top: 47px;
+    margin-top: 44px;
   }
   .small-tick {
-    height: 0.61vh;
+    height: 0.62vh;
+  }
+  .zoomed-content .measurement-quantity {
+    margin-top: 36px;
+    height: 11.5px; /* Adjust for spacing between ticks */
+  }
+  .zoomed-content .big-tick-180 {
+    margin-top: 42px;
+  }
+  .zoomed-content {
+    margin-top: 20px;
+  }
+  .zoomed-content .small-tick {
+    height: 0.45vh;
+    margin-block: 0.5px;
+  }
+  .zoom-lens {
+    width: 190px;
+    height: 170px;
   }
 }
 @media screen and (min-height: 900px) {
@@ -151,5 +215,16 @@
   }
   .small-tick {
     height: 0.59vh;
+  }
+  .zoomed-content .measurement-quantity {
+    margin-top: 40px;
+    height: 12px; /* Adjust for spacing between ticks */
+  }
+  .zoom-lens {
+    width: 200px;
+    height: 190px;
+  }
+  .zoomed-content {
+    margin-top: 25px;
   }
 }
